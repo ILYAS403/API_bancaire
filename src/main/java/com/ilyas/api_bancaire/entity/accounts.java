@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 public class accounts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="accountId;")
-    private Long accountId;;
+    @Column(name="accountid")
+    private Long accountId;
     @Column(name="account_number")
     private String account_number;
     @Column(name="iban")
@@ -26,7 +26,7 @@ public class accounts {
     @Column (name="created_at")
     private LocalDateTime created_at;
     @Column (name="user_id")
-    private Long user_id;
+    private Long userId;
 
 
     public Long getaccountId() {
@@ -85,11 +85,11 @@ public class accounts {
         this.created_at = created_at;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

@@ -48,17 +48,17 @@ L'authentification repose sur :
 *  Connexion à PostgreSQL
 *  Gestion des utilisateurs avec JPA/Hibernate
 *  Tests des endpoints avec Postman
-
-## 🚧 En cours de développement
-
 *  Création d'un compte bancaire
 *  Consultation d'un compte
 *  Gestion du solde
+
+## 🚧 En cours de développement
+
+
 *  Virements entre comptes
 *  Historique des transactions
 *  Gestion complète des autorisations
 *  Tests unitaires et d'intégration
-*  Documentation Swagger/OpenAPI
 
 ## 📂 Architecture
 
@@ -140,23 +140,9 @@ POST /api/users/login
 
 Une fois authentifié, le serveur génère un **JWT** permettant d'accéder aux endpoints protégés.
 
-## 📈 Roadmap
-
-Le projet évoluera progressivement vers une API bancaire complète avec :
-
-* Gestion des comptes
-* Transactions
-* Virements
-* Historique des opérations
-* Gestion des rôles
-* Validation des données
-* Tests automatisés
-* Documentation Swagger
 
 ## 👨‍💻 Auteur
 
 **Ilyas Dahir Houssein**
 
 Développeur Full-Stack / Backend Java
-
-Projet personnel réalisé dans le cadre de mon apprentissage de **Spring Boot, Java et développement d'API REST**.
