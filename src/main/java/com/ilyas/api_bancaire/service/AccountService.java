@@ -9,7 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 @Service
@@ -82,5 +81,99 @@ public class AccountService {
         }}
         return 0;
     }
+
+    public void depositService(Integer montants) {
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+
+        List<accounts> Myaccount = accountRepository.findAccountByuserId(user.getUserId());
+        Integer solde =0;
+        Integer newSolde =0;
+        for (accounts account : Myaccount) {
+            if (account.getAccount_type().equals("CHECKING")) {
+                 solde = account.getBalance();
+                 account.setBalance(solde + montants);
+
+
+            }
+
+            accountRepository.save(account);
+        }
+
+
+
+    }
+
+    public void retraitService(Integer montants) {
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+
+        List<accounts> Myaccount = accountRepository.findAccountByuserId(user.getUserId());
+        Integer solde =0;
+
+        for (accounts account : Myaccount) {
+            if (account.getAccount_type().equals("CHECKING")) {
+                solde = account.getBalance();
+                account.setBalance(solde - montants);
+
+
+            }
+
+            accountRepository.save(account);
+        }
+    }
+
+    public void virementService(String accountType, Integer montants) {
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+
+        List<accounts> Myaccount = accountRepository.findAccountByuserId(user.getUserId());
+        Integer solde = 0;
+        if (accountType.equals("CHECKING")) {
+            for (accounts account : Myaccount) {
+                if (account.getAccount_type().equals("SAVINGS")) {
+                    solde = account.getBalance();
+                    account.setBalance(solde + montants);
+                    accountRepository.save(account);
+                } else {
+                    solde = account.getBalance();
+                    account.setBalance(solde - montants);
+                    accountRepository.save(account);
+                }
+
+            }
+        } else if (accountType.equals("SAVINGS")) {
+
+            for (accounts account : Myaccount) {
+                if (account.getAccount_type().equals("CHECKING")) {
+                    solde = account.getBalance();
+                    account.setBalance(solde + montants);
+                    accountRepository.save(account);
+                } else {
+                    solde = account.getBalance();
+                    account.setBalance(solde - montants);
+                    accountRepository.save(account);
+                }
+
+            }
+
+        }
+    }
+
 
 }

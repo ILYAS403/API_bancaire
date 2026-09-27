@@ -51,13 +51,12 @@ L'authentification repose sur :
 *  Création d'un compte bancaire
 *  Consultation d'un compte
 *  Gestion du solde
+*  Virements entre comptes
+*  Gestion complète des autorisations
 
 ## 🚧 En cours de développement
 
-
-*  Virements entre comptes
 *  Historique des transactions
-*  Gestion complète des autorisations
 *  Tests unitaires et d'intégration
 
 ## 📂 Architecture

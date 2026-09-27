@@ -18,14 +18,30 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @PostMapping("/{createAccount}")
+    @PostMapping("/createAccount")
     public accounts createAccount(@RequestBody AccountRequest request) {
 
         return accountService.createAccount(request.getAccountType());
     }
 
-    @GetMapping("/{getAccounts}")
+    @GetMapping("/getSode")
     public Integer getBalanceAccount() {
         return accountService.getBalanceAccount();
+    }
+
+
+    @PostMapping("/depot")
+    public void  deposit(@RequestBody Integer montants ) {
+       accountService.depositService(montants);
+    }
+
+    @PostMapping("/retrait")
+    public void retrait(@RequestBody Integer montants ) {
+         accountService.retraitService(montants);
+    }
+
+    @PostMapping("/virrement")
+    public void  virement(@RequestBody AccountRequest request ) {
+         accountService.virementService(request.getAccountType(), request.getMontants());
     }
 }
