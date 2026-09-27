@@ -110,7 +110,7 @@ spring.datasource.username=postgres
 spring.datasource.password=YOUR_PASSWORD
 ```
 
-> ⚠️ Les informations sensibles ne sont pas présentes dans le repository.
+
 
 ### 3. Lancer l'application
 
